@@ -11,7 +11,7 @@ class Person
         }
         public void Show()
         {
-            Console.WriteLine($"Hello, my name is {Name} and I am {Age} years old.");
+            Console.WriteLine($"Name: {Name}  Age: {Age} ");
         }
 }
 public class Program
