@@ -14,8 +14,8 @@ class Person
     }
     public Person (string name, int age)
     {
-        Name = name;
-        Age = age;
+        this.Name = name;
+        this.Age = age;
     }
 
     public void Show()

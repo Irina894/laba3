@@ -13,19 +13,19 @@ class Employee
 
     public Employee(string name, double salary, string position, string department)
     {
-        Name = name;
-        Salary = salary;
-        Position = position;
-        Department = department;
-        Email = "n/a"; 
-        Age = -1;   
+        this.Name = name;
+        this.Salary = salary;
+        this.Position = position;
+        this.Department = department;
+        this.Email = "n/a"; 
+        this.Age = -1;   
     }
 
     public Employee(string name, double salary, string position, string department, string email, int age)
         : this(name, salary, position, department)
     {
-        Email = email;
-        Age = age;
+        this.Email = email;
+        this.Age = age;
     }
 
     public void Show()
@@ -42,31 +42,39 @@ class Program
         int n = int.Parse(Console.ReadLine());
         List<Employee> employees = new List<Employee>();
 
-        Console.WriteLine("Enter name salary position department email age:");
         for (int i = 0; i < n; i++)
         {
-            string[] parts = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            Console.WriteLine("Enter name:");
+            string name = Console.ReadLine();
 
-            string name = parts[0];
-            double salary = double.Parse(parts[1]);
-            string position = parts[2];
-            string department = parts[3];
+            Console.WriteLine("Enter salary:");
+            double salary = double.Parse(Console.ReadLine());
 
-            if (parts.Length == 4)
+            Console.WriteLine("Enter position:");
+            string position = Console.ReadLine();
+
+            Console.WriteLine("Enter department:");
+            string department = Console.ReadLine();
+
+            Console.WriteLine("Do you want to enter email? (y/n)");
+            string answerEmail = Console.ReadLine();
+            string email = "n/a";
+            if (answerEmail.ToLower() == "y")
             {
-                employees.Add(new Employee(name, salary, position, department));
+                Console.WriteLine("Enter email:");
+                email = Console.ReadLine();
             }
-            else if (parts.Length == 5)
+
+            Console.WriteLine("Do you want to enter age? (y/n)");
+            string answerAge = Console.ReadLine();
+            int age = -1;
+            if (answerAge.ToLower() == "y")
             {
-                string email = parts[4];
-                employees.Add(new Employee(name, salary, position, department, email, -1));
+                Console.WriteLine("Enter age:");
+                age = int.Parse(Console.ReadLine());
             }
-            else if (parts.Length == 6)
-            {
-                string email = parts[4];
-                int age = int.Parse(parts[5]);
-                employees.Add(new Employee(name, salary, position, department, email, age));
-            }
+
+            employees.Add(new Employee(name, salary, position, department, email, age));
         }
 
         // 1. знайдемо всі відділи
